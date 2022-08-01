@@ -1,0 +1,42 @@
+name: Check
+
+on:
+  schedule:
+    - cron: '*/15 * * * *' #10分钟
+  workflow_dispatch: #手动调试按钮
+
+jobs:
+  Check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3 #Git Clone
+    - uses: actions/setup-node@v3 #Node.js环境
+      with:
+        node-version: '16.x' #Node.js 16.x
+    - name: 🔧 Timezone #UTC+0 → UTC+8
+      run: sudo timedatectl set-timezone 'Asia/Shanghai'
+    - name: 🔧 Git #配置Git的上传用户名和邮箱
+      run: |
+        git config pull.rebase false
+        git config --local user.name "GitHub Actions"
+        git config --local user.email "actions@github.com"
+    - name: 📦️ NPM #安装npm包
+      run: npm ci
+    - name: 🗑️ Delete #删除文件
+      run: |
+        cd ./web/public/
+        rm -f ./https
+        rm -f ./long
+        rm -f ./Quanx.conf
+        rm -f ./Clash.yaml
+        rm -f ./_headers
+    - name: 🩺 Check #检查openit.pw是否挂了
+      env: #设置环境变量
+        CHECKLY_CHECK_ID: ${{ secrets.CHECKLY_CHECK_ID }}
+        CHECKLY_ACCOUNT_ID: ${{ secrets.CHECKLY_ACCOUNT_ID }}
+        CHECKLY_API_TOKEN: ${{ secrets.CHECKLY_API_TOKEN }}
+      run: npm start
+    - name: 🔀 Git Push #Push
+      run: |
+        chmod +x ./.github/update-repo.sh
+        ./.github/update-repo.sh || true

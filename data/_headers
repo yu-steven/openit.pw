@@ -1,0 +1,19 @@
+/https
+  p: p
+  servestatus: up
+  Content-Type: application/octet-stream
+
+/long
+  p: p
+  servestatus: up
+  Content-Type: application/octet-stream
+
+/Quanx.conf
+  p: p
+  servestatus: up
+  Content-Type: application/octet-stream
+
+/Clash.yaml
+  p: p
+  servestatus: up
+  Content-Type: application/octet-stream

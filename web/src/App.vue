@@ -1,0 +1,214 @@
+<template>
+  <n-config-provider :locale="zhCN" :theme="darkTheme">
+    <n-back-top />
+    <n-grid :cols="36" item-responsive>
+      <n-gi span="1 1330:8" />
+      <n-gi span="34 1330:20">
+        <n-card style="margin-top: 15px">
+          <n-result :status="resultStatus" :title="resultTitle">
+            <template #footer>
+              <n-button @click="goToDocs">前往 openit.daycat.space</n-button>
+            </template>
+          </n-result>
+          <n-divider />
+          <n-alert
+            v-if="showBotInterveneAlert"
+            title="自动化程序已介入，预计在2分钟内恢复正常"
+            type="success"
+            style="margin-block-end: 15px"
+          >
+            没恢复当我没说<br/>
+            介入时间: {{ botInterveneTime }}
+          </n-alert>
+          <n-alert v-if="showErrorAlert || showBotAlert" title="可用性降低" type="error" style="margin-block-end: 15px">
+            本站已被CC攻击，请耐心等待恢复或点击
+            <n-a
+              href="https://openit.daycat.space/guide/domains.html"
+              target="_blank"
+            >
+              这里
+            </n-a>
+            查看其他域名
+            <br/>
+            自动化程序预计在10分钟内介入
+          </n-alert>
+          <img src="https://api.checklyhq.com/v1/badges/groups/304117?style=for-the-badge&theme=dark" loading="lazy" />
+          <div v-if="showErrorAlert == false">
+            <n-h2>Clash</n-h2>
+            <n-ul>
+              <n-li>https://openit.pw/clash</n-li>
+              <n-li>https://openit.pw/Clash</n-li>
+              <n-li>https://openit.pw/CLASH</n-li>
+              <n-li>https://openit.pw/Clash.yaml</n-li>
+              <n-li
+                >https://openit.pw/get/<n-text type="success">[FileName]</n-text
+                >?type=clash</n-li
+              >
+            </n-ul>
+
+            <n-h2>Quantumult X</n-h2>
+            <n-ul>
+              <n-li>https://openit.pw/qx</n-li>
+              <n-li>https://openit.pw/quanx</n-li>
+              <n-li>https://openit.pw/Quanx</n-li>
+              <n-li>https://openit.pw/Quanx.conf</n-li>
+            </n-ul>
+
+            <n-h2>Other</n-h2>
+            <n-ul>
+              <n-li>https://openit.pw/https</n-li>
+              <n-li
+                >https://openit.pw/get/<n-text type="success">[FileName]</n-text
+                >?type=https</n-li
+              >
+            </n-ul>
+            <n-ul>
+              <n-li>https://openit.pw/long</n-li>
+              <n-li
+                >https://openit.pw/get/<n-text type="success">[FileName]</n-text
+                >?type=long</n-li
+              >
+            </n-ul>
+          </div>
+        </n-card>
+      </n-gi>
+      <n-gi span="1 1330:8" />
+    </n-grid>
+    <n-global-style />
+  </n-config-provider>
+</template>
+
+<script>
+import { ref, defineComponent } from "vue";
+import { darkTheme, zhCN } from "naive-ui";
+import {
+  NA,
+  NGi,
+  NH2,
+  NLi,
+  NUl,
+  NCard,
+  NGrid,
+  NText,
+  NAlert,
+  NButton,
+  NResult,
+  NBackTop,
+  NDivider,
+} from "naive-ui";
+import { NGlobalStyle, NConfigProvider } from "naive-ui";
+
+/**
+ * 整理查询参数
+ * @param {String} search location.search
+ * @returns {JSON|String} 整理后的查询参数
+ */
+const getSearch = (search) => {
+  if (search == "") {
+    return "";
+  } else {
+    const searchList = search.replace("?", "").split("&");
+    const searchData = {};
+    for (const i in searchList) {
+      const tmp = searchList[i].split("=");
+
+      searchData[tmp[0]] = tmp[1];
+    }
+    return searchData;
+  }
+};
+
+const setError = () => {
+  showErrorAlert.value = true;
+  resultStatus.value = "500";
+  resultTitle.value = "可用性降低";
+  document.title = "可用性降低";
+}
+
+const init = () => {
+  if (showBotInterveneAlert.value) {
+    resultStatus.value = "500";
+    resultTitle.value = "可用性降低";
+    document.title = "可用性降低";
+    return;
+  }
+  const pathName = location.pathname;
+  const search = getSearch(location.search);
+  const pathList = [
+    "/CLASH",
+    "/Clash",
+    "/clash",
+    "/Clash.yaml",
+    "/qx",
+    "/quanx",
+    "/Quanx",
+    "/Quanx.conf",
+    "/https",
+    "/long",
+  ];
+
+  for (const i in pathList) {
+    const plName = pathList[i];
+    if (plName == pathName) {
+      setError();
+    } else if (
+      pathName.split("/")[1] == "get" &&
+      search != "" &&
+      (search.type == "clash" ||
+        search.type == "Clash" ||
+        search.type == "long" ||
+        search.type == "Long" ||
+        search.type == "https")
+    ) {
+      setError();
+    }
+  }
+};
+
+const showErrorAlert = ref(false);
+const showBotInterveneAlert = ref(true);
+const botInterveneTime = ref("Mon Aug 01 2022 04:41:03 GMT+0800 (China Standard Time)");
+const resultStatus = ref("418");
+const resultTitle = ref("需要杯茶吗");
+export default defineComponent({
+  components: {
+    NA,
+    NGi,
+    NH2,
+    NLi,
+    NUl,
+    NCard,
+    NGrid,
+    NText,
+    NAlert,
+    NButton,
+    NResult,
+    NBackTop,
+    NDivider,
+    // Config
+    NGlobalStyle,
+    NConfigProvider,
+  },
+  setup() {
+    init();
+    return {
+      zhCN,
+      darkTheme,
+      showErrorAlert,
+      showBotInterveneAlert,
+      botInterveneTime,
+      resultStatus,
+      resultTitle,
+      goToDocs: () => {
+        location.href = "https://openit.daycat.space/";
+      },
+    };
+  },
+});
+</script>
+
+<style>
+a {
+  text-decoration: none;
+}
+</style>
