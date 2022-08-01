@@ -166,8 +166,8 @@ const init = () => {
 };
 
 const showErrorAlert = ref(false);
-const showBotInterveneAlert = ref(true);
-const botInterveneTime = ref("Mon Aug 01 2022 04:41:03 GMT+0800 (China Standard Time)");
+const showBotInterveneAlert = ref(false);
+const botInterveneTime = ref("Undefined");
 const resultStatus = ref("418");
 const resultTitle = ref("需要杯茶吗");
 export default defineComponent({
