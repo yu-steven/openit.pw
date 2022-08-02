@@ -35,6 +35,8 @@ jobs:
         CHECKLY_CHECK_ID: ${{ secrets.CHECKLY_CHECK_ID }}
         CHECKLY_ACCOUNT_ID: ${{ secrets.CHECKLY_ACCOUNT_ID }}
         CHECKLY_API_TOKEN: ${{ secrets.CHECKLY_API_TOKEN }}
+        TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        TELEGRAM_FATHER_ID: ${{ secrets.TELEGRAM_FATHER_ID }}
       run: npm start
     - name: 🔀 Git Push #Push
       run: |
