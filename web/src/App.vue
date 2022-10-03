@@ -33,7 +33,7 @@
               href="https://openit.checklyhq.com"
               target="_blank"
             >
-            这里
+              这里
             </n-b>
             查看在线情况
             <br/>
@@ -47,18 +47,18 @@
             </n-ul>
 
             <n-h2>Quantumult X</n-h2>
-            <img src="https://api.checklyhq.com/v1/badges/checks/875952a4-4e16-4fd3-910a-b700c57641c9?style=flat&theme=default" loading="lazy" />
             <n-ul>
+              <img src="https://api.checklyhq.com/v1/badges/checks/875952a4-4e16-4fd3-910a-b700c57641c9?style=flat&theme=default" loading="lazy" />
               <n-li>https://openit.daycat.space/Quanx.conf</n-li>
             </n-ul>
 
             <n-h2>Other</n-h2>
-            <img src="https://api.checklyhq.com/v1/badges/checks/a8107f8b-761b-4b5c-a684-74ed4eaf5806?style=flat&theme=default" loading="lazy" />
             <n-ul>
+              <img src="https://api.checklyhq.com/v1/badges/checks/a8107f8b-761b-4b5c-a684-74ed4eaf5806?style=flat&theme=default" loading="lazy" />
               <n-li>https://openit.daycat.space/https</n-li>
             </n-ul>
-            <img src="https://api.checklyhq.com/v1/badges/checks/94ecef57-aedb-47e1-94d8-d8247ea02d9f?style=flat&theme=default" loading="lazy" />
             <n-ul>
+              <img src="https://api.checklyhq.com/v1/badges/checks/94ecef57-aedb-47e1-94d8-d8247ea02d9f?style=flat&theme=default" loading="lazy" />
               <n-li>https://openit.daycat.space/long</n-li>
             </n-ul>
           </div>
