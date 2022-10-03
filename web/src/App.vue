@@ -7,7 +7,7 @@
         <n-card style="margin-top: 15px">
           <n-result :status="resultStatus" :title="resultTitle">
             <template #footer>
-              <n-button @click="goToDocs">前往 openit.daycat.space</n-button>
+              <n-button @click="goToDocs">返回 openit.daycat.space</n-button>
             </template>
           </n-result>
           <n-divider />
@@ -36,37 +36,20 @@
           <div v-if="showErrorAlert == false">
             <n-h2>Clash</n-h2>
             <n-ul>
-              <n-li>https://openit.pw/clash</n-li>
-              <n-li>https://openit.pw/Clash</n-li>
-              <n-li>https://openit.pw/CLASH</n-li>
-              <n-li>https://openit.pw/Clash.yaml</n-li>
-              <n-li
-                >https://openit.pw/get/<n-text type="success">[FileName]</n-text
-                >?type=clash</n-li
-              >
+              <n-li>https://openit.daycat.space/Clash.yaml</n-li>
             </n-ul>
 
             <n-h2>Quantumult X</n-h2>
             <n-ul>
-              <n-li>https://openit.pw/qx</n-li>
-              <n-li>https://openit.pw/quanx</n-li>
-              <n-li>https://openit.pw/Quanx</n-li>
-              <n-li>https://openit.pw/Quanx.conf</n-li>
+              <n-li>https://openit.daycat.space/Quanx.conf</n-li>
             </n-ul>
 
             <n-h2>Other</n-h2>
             <n-ul>
-              <n-li>https://openit.pw/https</n-li>
-              <n-li
-                >https://openit.pw/get/<n-text type="success">[FileName]</n-text
-                >?type=https</n-li
-              >
+              <n-li>https://openit.daycat.space/https</n-li>
             </n-ul>
             <n-ul>
-              <n-li>https://openit.pw/long</n-li>
-              <n-li
-                >https://openit.pw/get/<n-text type="success">[FileName]</n-text
-                >?type=long</n-li
+              <n-li>https://openit.daycat.space/long</n-li>
               >
             </n-ul>
           </div>
