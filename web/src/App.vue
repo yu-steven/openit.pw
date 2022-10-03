@@ -41,8 +41,8 @@
           </n-alert>
           <div v-if="showErrorAlert == false">
             <n-h2>Clash</n-h2>
-            <img src="https://api.checklyhq.com/v1/badges/checks/5feeddfd-f327-4a99-9277-9a7edd406226?style=flat&theme=default" loading="lazy" />
             <n-ul>
+              <img src="https://api.checklyhq.com/v1/badges/checks/5feeddfd-f327-4a99-9277-9a7edd406226?style=flat&theme=default" loading="lazy" />
               <n-li>https://openit.daycat.space/Clash.yaml</n-li>
             </n-ul>
 
