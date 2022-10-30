@@ -128,14 +128,8 @@ const init = () => {
   const pathName = location.pathname;
   const search = getSearch(location.search);
   const pathList = [
-    "/CLASH",
-    "/Clash",
     "/clash",
-    "/Clash.yaml",
     "/qx",
-    "/quanx",
-    "/Quanx",
-    "/Quanx.conf",
     "/https",
     "/long",
   ];
